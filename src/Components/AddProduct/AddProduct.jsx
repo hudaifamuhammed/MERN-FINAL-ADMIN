@@ -30,21 +30,21 @@ const AddProduct = () => {
     })
       .then((resp) => resp.json())
       .then(async (data) => {dataObj=data
-        if (dataObj.success) {
-          product.image = dataObj.image_url;
-          console.log(product);
-          await fetch(`${process.env.REACT_APP_ADMIN}/addproduct`, {
-          method: 'POST',
-          headers: {
-            Accept:'application/json',
-            'Content-Type':'application/json',
-          },
-          body: JSON.stringify(product),
-        })
-          .then((resp) => resp.json())
-          .then((data) => {data.success?alert("Product Added"):alert("Failed")});
-          
-        }});
+      if (dataObj.success) {
+      product.image = dataObj.image_url;
+      console.log(product);
+      await fetch(`${process.env.REACT_APP_ADMIN}/addproduct`, {
+      method: 'POST',
+      headers: {
+        Accept:'application/json',
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify(product),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {data.success?alert("Product Added"):alert("Failed")});
+      
+    }});
 
     
   }
